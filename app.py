@@ -1,11 +1,26 @@
 import os
 from werkzeug.utils import secure_filename
-from flask import Flask, request
+from flask import Flask, request,render_template
 import json
 
 app = Flask(__name__)
 UPLOAD_FOLDER = './static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/')
+def start():
+    return render_template('auth.html', menu="login")
+
+@app.route('/login')
+def login():
+    return render_template('auth.html', menu="login")
+@app.route('/registration')
+def registration():
+    return render_template('auth.html', menu="registration")
+
+@app.route('/main')
+def main_page():
+     return render_template('main.html')
 
 
 @app.route('/user_login', methods=['post'])
@@ -23,7 +38,7 @@ def login_user_req():
             }
             return res
 
-    return {"message": "Указанного пользователя не существует"}
+    return {"message": "Указанного пользователя не существует","code":403}
 
 @app.route('/user_registration', methods=['post'])
 def registration_user_req():
@@ -46,12 +61,12 @@ def registration_user_req():
         write_db(old_data)
         return res
 
-    return {"message": "Указанный пользователь уже существует"}
+    return {"message": "Указанный пользователь уже существует","code":403}
 
 @app.route('/car', methods=['GET'])
 def get_cars_req():
     data = read_db()
-    return data
+    return data["cars"]
 
 
 @app.route('/car', methods=["PUT"])
