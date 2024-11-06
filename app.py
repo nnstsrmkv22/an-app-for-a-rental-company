@@ -1,7 +1,7 @@
-import os
+import re
 from werkzeug.utils import secure_filename
 from flask import Flask, request,render_template
-import json
+from database import does_user_exist, compare_json, contains_id, read_db, write_db
 
 app = Flask(__name__)
 UPLOAD_FOLDER = './static'
@@ -26,6 +26,12 @@ def main_page():
 @app.route('/user_login', methods=['post'])
 def login_user_req():
     data = request.get_json()
+
+    if(len(data["email"]) == 0):
+        return {"message":"Введите почту","code":400}
+    if(len(data["password"]) == 0):
+        return {"message":"Введите пароль","code":400}
+
     old_data = read_db()
     user_list = old_data["users"]
 
@@ -37,12 +43,25 @@ def login_user_req():
                 "email": user_existance["user"]["email"],
             }
             return res
+        else:
+            return {"message":"Был введён неверный пароль пароль","code":400}
 
     return {"message": "Указанного пользователя не существует","code":403}
 
 @app.route('/user_registration', methods=['post'])
 def registration_user_req():
+    email_regex = re.compile((r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"))
     data = request.get_json()
+
+    if(len(data["email"]) == 0):
+        return {"message":"Введите почту","code":400}
+    if(len(data["password"]) == 0):
+        return {"message":"Введите пароль","code":400}
+    if len(data["password"]) < 4 or len(data["password"]) > 16:
+        return {"message":"Пароль должен быть от 4 до 16 символов","code":400}
+    if not(email_regex.fullmatch(data["email"])):
+        return {"message":"Почта не подходит по формату: mail@mail.ru","code":400}
+
     old_data = read_db()
     user_list = old_data["users"]
 
@@ -88,37 +107,6 @@ def update_car_req():
     write_db(old_data)
 
     return old_data
-
-    
-def does_user_exist(user_list, user_email):
-    for i in user_list:
-        if i["email"] == user_email:
-            return {
-                "exist": True, 
-                "user": i
-                }
-    return {"exist": False, "user":None}
-
-def compare_json(json1, json2):
-    for i in list(json1.keys()):
-        if i in json2:
-            json1[i] = json2[i]
-    return json1
-
-def contains_id(json_list, id):
-    for i in json_list:
-        if i["id"] == id:
-            return json_list.index(i)
-    return False
-
-def read_db():
-    with open("./database/db.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    return data
-
-def write_db(old_data):
-    with open("./database/db.json", "w") as jsonFile:
-        json.dump(old_data, jsonFile)
 
 if __name__ == "__main__":
     app.run(debug=True)

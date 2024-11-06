@@ -34,12 +34,12 @@
               password: document.getElementById('floatingPassword').value
             })
           }).then((data)=>data.json()).then((res)=>{
-            if(res.code == 403)
+            if(res.code)
               console.log(res.message)
             else{
               window.location.replace('main')
-              localStorage.setItem("user", res)
-            }
+              localStorage.setItem("user", [res.id, res.email].join(' '))
+            } 
           })
         }
         function registration(){
@@ -54,11 +54,11 @@
               password: document.getElementById('floatingPassword').value
             })
           }).then((data)=>data.json()).then((res)=>{
-            if(res.code == 403)
+            if(res.code)
               console.log(res.message)
             else{
               window.location.replace('main')
-              localStorage.setItem("user", res)
+              localStorage.setItem("user", [res.id, res.email].join(' '))
             }
           })
         }

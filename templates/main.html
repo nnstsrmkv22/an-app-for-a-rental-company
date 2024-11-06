@@ -44,7 +44,7 @@
                   </li>
                 </ul>
                 <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-                  <button class="btn btn-danger">Exit</button>
+                  <button class="btn btn-danger" onclick="event.preventDefault(); exitButton();">Exit</button>
                 </div>
               </div>
             </div>
@@ -90,6 +90,12 @@
                 )
             }
             window.onload = getAllRentCars;
+
+            function exitButton(){
+              localStorage.clear();
+              window.history.forward();
+              window.location.replace('login');
+            }
         </script>
     </body>
 </html>
