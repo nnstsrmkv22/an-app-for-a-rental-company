@@ -1,6 +1,6 @@
 import re
 from werkzeug.utils import secure_filename
-from flask import Flask, request,render_template
+from flask import Flask, request, render_template, send_from_directory
 from database import does_user_exist, compare_json, contains_id, read_db, write_db
 
 app = Flask(__name__)
@@ -18,10 +18,17 @@ def login():
 def registration():
     return render_template('auth.html', menu="registration")
 
-@app.route('/main')
-def main_page():
-     return render_template('main.html')
+@app.route('/prices')
+def price_page():
+     return render_template('cardlist.html', main="maincontent")
 
+@app.route('/prices/<car>')
+def car_page(car):
+     return render_template('car.html', main=car)
+
+@app.route('/static/<path:path>')
+def send_report(path):
+    return send_from_directory('static', path)
 
 @app.route('/user_login', methods=['post'])
 def login_user_req():
@@ -44,7 +51,7 @@ def login_user_req():
             }
             return res
         else:
-            return {"message":"Был введён неверный пароль пароль","code":400}
+            return {"message":"Был введён неверный пароль ","code":400}
 
     return {"message": "Указанного пользователя не существует","code":403}
 
@@ -87,6 +94,14 @@ def get_cars_req():
     data = read_db()
     return data["cars"]
 
+@app.route('/car/<carid>', methods=['GET'])
+def get_car_req(carid):
+    data = read_db()
+    res = {"message":"empty", "code":404}
+    for i in data["cars"]:
+        if i["id"] == int(carid):
+            res = i
+    return res
 
 @app.route('/car', methods=["PUT"])
 def update_car_req():

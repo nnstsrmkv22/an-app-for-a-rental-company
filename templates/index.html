@@ -8,12 +8,19 @@
             }
             .form-signin{
                 position: relative;
-                width: max-content;
+                width: 15rem;
                 top: 50%;
                 transform: translateY(-50%);
                 margin-left: auto;
                 margin-right: auto;
             }
+            .error-hidden{
+              margin-bottom: 0.5rem;
+              color:red;
+              font-size: 0.7rem;
+              opacity: 0;
+            }
+
         </style>
     </head>
     <body>
@@ -34,10 +41,13 @@
               password: document.getElementById('floatingPassword').value
             })
           }).then((data)=>data.json()).then((res)=>{
-            if(res.code)
+            if(res.code){
               console.log(res.message)
-            else{
-              window.location.replace('main')
+              document.getElementById("error").style.opacity = 1;
+              document.getElementById("error").textContent = res.message; 
+            }
+              else{
+              window.location.replace('prices')
               localStorage.setItem("user", [res.id, res.email].join(' '))
             } 
           })
@@ -54,10 +64,13 @@
               password: document.getElementById('floatingPassword').value
             })
           }).then((data)=>data.json()).then((res)=>{
-            if(res.code)
+            if(res.code){
               console.log(res.message)
+              document.getElementById("error").style.opacity = 1;
+              document.getElementById("error").textContent = res.message; 
+            }
             else{
-              window.location.replace('main')
+              window.location.replace('prices')
               localStorage.setItem("user", [res.id, res.email].join(' '))
             }
           })

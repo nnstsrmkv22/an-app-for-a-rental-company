@@ -14,9 +14,11 @@
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
         <label for="floatingPassword">Password</label>
       </div>
-      <button class="btn btn-primary w-100 py-2 mt-2" onclick="event.preventDefault(); login();">Sign in</button>
+      <p class="error-hidden" id="error">Ошибка</p>
+
+      <button class="btn btn-primary w-100 py-2 " onclick="event.preventDefault(); login();">Sign in</button>
     </form>
-    <a href="{{ url_for('registration') }}">Do you already have account?</a>
+    <a href="{{ url_for('registration') }}">You don't have account?</a>
   </main>
 {% else %}
   <main class="form-signin">
@@ -27,11 +29,14 @@
         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" autocomplete="off">
         <label for="floatingInput">Email address</label>
       </div>
+
       <div class="form-floating mt-2">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
         <label for="floatingPassword">Password</label>
       </div>
-      <button class="btn btn-primary w-100 py-2 mt-2" onclick="event.preventDefault(); registration();">Sign in</button>
+      <p class="error-hidden" id="error">Ошибка</p>
+
+      <button class="btn btn-primary w-100 py-2 " onclick="event.preventDefault(); registration();">Sign in</button>
     </form>
     <a href="{{ url_for('login') }}" ">Do you already have account? </a>
   </main>

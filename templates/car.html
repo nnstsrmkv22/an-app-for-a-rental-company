@@ -1,0 +1,75 @@
+
+{% extends 'main.html' %}
+{% block maincontent %}
+{{ super() }}
+
+
+
+<div class= 'car'>
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3" >
+        <div class="car-description">
+            <div class="container-fluid py-5">
+              <h1 class="display-5 fw-bold">Custom jumbotron</h1>
+              <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+            </div>
+            <img/>
+        </div>
+      </div>
+</div>
+<div class="rent">
+    <dialog id="modal-dialog">
+        <input type="date">
+        
+    </dialog>
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3" >
+        <div class="rent-header">
+            <p class="fw-bold fs-4">Rent a car:</p>
+            <button class="btn btn-success mb-2" onclick="showDialog();">Rent now</button>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rent start at</th>
+                <th scope="col">Rent end at</th>
+              </tr>
+            </thead>
+            <tbody class="rent-table">
+              <tr>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+</div>
+<script>
+    function getDataWithCarId(){
+        let data = fetch('http://127.0.0.1:5000/car/{{main}}')
+        .then((res)=>res.json())
+        .then((data)=>{
+            document.querySelector('h1').innerText = data.name
+            document.querySelector('p').innerText = data.description
+            document.querySelector('img').alt = data.image
+            document.querySelector('img').src = 'http://127.0.0.1:5000/static/' + data.image
+            console.log(data.avaible_time)
+            data.avaible_time.forEach((time,index)=>{
+                const markup = `
+                <tr>
+                    <th scope="row">${index+1}</th>
+                    <td>${time[0]}</td>
+                    <td>${time[1]}</td>
+                    <td>${time[2]}</td>
+                </tr>
+                `
+                document.querySelector('.rent-table').insertAdjacentHTML('beforeend',markup)
+            })
+        })
+    }
+    getDataWithCarId();
+
+    function showDialog(){
+        document.getElementById("modal-dialog").showModal();
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block maincontent %}
+{{ super() }}
+<div class= 'card-field'>
+</div>
+<script>
+    function getAllRentCars(){
+        fetch('http://127.0.0.1:5000/car')
+        .then((res)=>res.json())
+        .then((data)=>{
+            data.forEach((car)=>{
+                const markup =
+                `<div class="card">
+                      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                        <image href='http://127.0.0.1:5000/static/${car.image}'/>
+                      </svg>
+                      <div class="card-body">
+                        <p class="card-text">${car.name}</p>
+                        <p class="card-text">${car.description}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="event.preventDefault(); window.location.replace('/prices/${String(car.id)}')"">View</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>`
+                if(document.querySelector('.card-field'))
+                  document.querySelector('.card-field').insertAdjacentHTML('beforeend',markup)
+            })
+        }
+        )
+    }
+    window.onload = getAllRentCars;
+   
+</script>
+{% endblock %}
