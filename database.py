@@ -12,14 +12,18 @@ def does_user_exist(user_list, user_email):
 def compare_json(json1, json2):
     for i in list(json1.keys()):
         if i in json2:
-            json1[i] = json2[i]
+            print(type(json1[i]))
+            if not(type(json1[i]) == list):
+                json1[i] = json2[i]
+            else:
+                json1[i].append(json2[i])
     return json1
 
 def contains_id(json_list, id):
     for i in json_list:
         if i["id"] == id:
             return json_list.index(i)
-    return False
+    return None
 
 def read_db():
     with open("./database/db.json", "r") as jsonFile:

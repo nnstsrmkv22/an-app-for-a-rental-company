@@ -1,9 +1,10 @@
 import re
-from werkzeug.utils import secure_filename
+from datetime import datetime
 from flask import Flask, request, render_template, send_from_directory
 from database import does_user_exist, compare_json, contains_id, read_db, write_db
 
 app = Flask(__name__)
+CONST_NO_MATCHES = "No matches"
 UPLOAD_FOLDER = './static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -111,13 +112,36 @@ def update_car_req():
     cars_list = old_data["cars"]
     
     indexInsideList = contains_id(cars_list,int(data["id"]))
-
     if indexInsideList:
+        start_day = data["avaible_time"][1].split('-')
+        end_day = data["avaible_time"][2].split('-')
+
+        if not(len(start_day) == 3 and len(end_day) == 3) :
+            return {'message': "Даты не должны быть пустыми", "code":400}
+
+        start_day_datetime = datetime(int(start_day[0]), int(start_day[1]), int(start_day[2]))
+        end_day_datetime = datetime(int(end_day[0]), int(end_day[1]), int(end_day[2]))
+        isValidStart = datetime.today() > start_day_datetime
+        isValidEnd = datetime.today() > end_day_datetime
+        if isValidStart or isValidEnd:
+            return {'message': "Значение дат не должно быть ниже нынешнего дня", "code":400}
+
+        time_list = cars_list[indexInsideList]["avaible_time"]
+
+        for time in time_list:
+            date1 = time[1].split('-')
+            date2 = time[2].split('-')
+            date_start = datetime(int(date1[0]),int(date1[1]),int(date1[2]))
+            date_end = datetime(int(date2[0]),int(date2[1]),int(date2[2]))
+            if (date_start < start_day_datetime and date_end > start_day_datetime) or (date_start < end_day_datetime and date_end > end_day_datetime):
+                return {'message': "Значение дат находится между другими датами", "code":400}
+            if (date_start > start_day_datetime and date_end < end_day_datetime):
+                return {'message': "Значение дат включает даты чужой аренды", "code":400}
         cars_list[indexInsideList] = compare_json(cars_list[indexInsideList], data)
     else:
-        return {'message': "Id товара не существует в базе данных"}
+        return {'message': "Id товара не существует в базе данных","code":400}
 
-    old_data = {"cars":cars_list}
+    old_data["cars"] = cars_list
 
     write_db(old_data)
 

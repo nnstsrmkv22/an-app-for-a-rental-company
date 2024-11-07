@@ -17,9 +17,20 @@
       </div>
 </div>
 <div class="rent">
-    <dialog id="modal-dialog">
-        <input type="date">
-        
+    <dialog class="dialog" id="modal-dialog">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">Rent form</h1>
+    
+            <label for="dateStart">Rent start</label>
+            <input type="text" class="form-control" id="dateStart" placeholder="10.12.1990" autocomplete="off" onfocus="(this.type='date')">
+    
+            <label for="dateEnd">Rent end</label>
+            <input type="text" class="form-control" id="dateEnd" placeholder="11.01.1991" autocomplete="off" onfocus="(this.type='date')">
+            
+            <p class="error-hidden" id="error">Ошибка</p>
+    
+            <button class="btn btn-primary w-100 py-2 mt-1" onclick="event.preventDefault(); rentACar();">Rent a car</button>
+        </form>
     </dialog>
     <div class="p-5 mb-4 bg-body-tertiary rounded-3" >
         <div class="rent-header">
@@ -69,7 +80,37 @@
     getDataWithCarId();
 
     function showDialog(){
-        document.getElementById("modal-dialog").showModal();
+        let dialog = document.getElementById("modal-dialog");
+        dialog.inert = true;
+        dialog.showModal();
+        dialog.inert = false;
+    }
+
+    function rentACar(){
+        let data = fetch('http://127.0.0.1:5000/car',{
+            method: "put",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: Number("{{main}}"),
+              avaible_time: [
+                localStorage.getItem("user").split(' ')[1],
+                document.getElementById('dateStart').value,
+                document.getElementById('dateEnd').value,  
+              ]
+            })
+          }).then((data)=>data.json()).then((res)=>{
+            if(res.code){
+              console.log(res.message)
+              document.getElementById("error").style.opacity = 1;
+              document.getElementById("error").textContent = res.message; 
+            }
+            else
+                document.getElementById("modal-dialog").close()
+          })
+        
     }
 </script>
 {% endblock %}
