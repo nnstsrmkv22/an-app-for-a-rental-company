@@ -1,1 +1,88 @@
-{"cars": [{"id": 1, "name": "BMW", "description": "The BMW Group (legally, Bayerische Motoren Werke AG, commonly abbreviated to BMW , sometimes anglicized as Bavarian Motor Works), is a German multinational manufacturer of luxury vehicles and motorcycles headquartered in Munich, Bavaria, Germany. The company was founded in 1916 as a manufacturer of aircraft engines, which it produced from 1917 to 1918 and again from 1933 to 1945 creating engines for aircraft that were used in the Second World War. The companies automobiles are marketed under the BMW, Mini and Rolls-Royce brands, and motorcycles are marketed under the BMW Motorrad brand. Also in 2023, BMW was the world's ninth-largest producer of motor vehicles, with 2,555,341 vehicles produced[3] and in 2023 the 6th largest by revenue.[4] ", "image": "autoBMW.png", "avaible_time": []}, {"id": 2, "name": "Mercedes-Benz S350d AMG 4MATIC W223 ", "description": "The car is in perfect condition, externally and internally in an AMG package. On the practical black interior, special MANUFAKTUR upholstery with Exklusiv nappa leather (diamond) and Burmester music. The W223 is based on the new MRA II modular platform, and also has a scattering of state-of-the-art on-board electronics. The cabin of the new S-class has many different and amenities. A luxurious OLED display in the center of the front panel, a proprietary second-generation M BUS multimedia system with which you can comfortably stay in the car. Graphics, performance, capabilities all this is at a qualitatively new level. The car has all kinds of massages, ventilation, heated surfaces, an ottoman for the rear right passenger, a Burmester 4D audio system, which includes speakers right in the seats (for maximum immersion in music). You can experience these and other luxury options yourself by renting this car.", "image": "mercedes-w233-6-1024x683.jpg", "avaible_time": [["das@mail.ru", "2024-11-14", "2024-11-16"], ["das@mail.ru", "2024-11-19", "2024-11-20"], ["das@mail.ru", "2024-11-21", "2024-11-23"], ["1mail@mail.ru", "2024-11-25", "2024-11-30"]]}, {"id": 3, "name": "Audi A4", "description": "The Audi A4 is a line of luxury compact executive cars produced since 1994 by the German car manufacturer Audi, a subsidiary of the Volkswagen Group. The A4 has been built in five generations and is based on the Volkswagen Group B platform. The first generation A4 succeeded the Audi 80. The automaker's internal numbering treats the A4 as a continuation of the Audi 80 lineage, with the initial A4 designated as the B5-series, followed by the B6, B7, B8, and the B9. The B8 and B9 versions of the A4 are built on the Volkswagen Group MLB platform shared with several models and brands across the Volkswagen Group. The Audi A4 automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine.", "avaible_time": [], "image": "5e8d9b24074b3e2d371af0b3.jpg"}, {"id": 4, "name": "Range Rover Autobiography Long IV", "description": "The maximum configuration of LONG AUTOBIOGRAPHY. The machine is in perfect condition, on 22\u0420\u00a0\u0412\u00a0\u0420\u2019\u0412\u00a0\u0420\u00a0\u0412\u00a0\u0420\u0406\u0420\u201a\u0412\u00a0\u0420\u00a0\u0412\u00a0\u0420\u2019\u0412\u00a0\u0420\u00a0\u0420\u2020\u0420\u00a0\u0432\u0402\u0459\u0420\u040e\u0432\u201e\u045e\u0420\u00a0\u0412\u00a0\u0420\u00a0\u0420\u2039\u0420\u00a0\u0420\u040b\u0420\u040e\u0432\u201e\u045e discs with retractable thresholds. The interior of the car is made in a beautiful red color, massage of the front and rear rows of seats. There are comfortable seats with atamans and monitors for the rear passengers. Panorama, sliding blinds on the rear doors and Meridian music.", "avaible_time": [], "image": "range-rover-6-1024x683.jpg"}, {"id": 5, "name": "BMW M3 G80", "description": "Renting a BMW M3 G80 from Brook Drive will allow you to experience all the delights of high-speed driving through the streets of Moscow. This powerful sedan will be your ideal companion, allowing you to easily overcome any obstacles on the way. Confident driving, excellent maneuverability and excellent dynamics will help you feel like the master of the road, wherever you find yourself. Each trip will be an exciting adventure filled with adrenaline and unforgettable emotions.", "avaible_time": [["1mail@mail.ru", "2024-11-09", "2024-11-10"], ["das@mail.ru", "2024-11-12", "2024-11-14"]], "image": "bmw-m3-9-1024x683.jpg"}], "users": [{"id": 1, "email": "mail@mail.ru", "password": "password"}, {"id": 2, "email": "1mail@mail.ru", "password": "password"}, {"id": 3, "email": "das@mail.ru", "password": "1233"}]}
+{
+  "cars": [
+    {
+      "id": 1,
+      "name": "BMW",
+      "description": "The BMW Group (legally, Bayerische Motoren Werke AG, commonly abbreviated to BMW , sometimes anglicized as Bavarian Motor Works), is a German multinational manufacturer of luxury vehicles and motorcycles headquartered in Munich, Bavaria, Germany. The company was founded in 1916 as a manufacturer of aircraft engines, which it produced from 1917 to 1918 and again from 1933 to 1945 creating engines for aircraft that were used in the Second World War. The companies automobiles are marketed under the BMW, Mini and Rolls-Royce brands, and motorcycles are marketed under the BMW Motorrad brand. Also in 2023, BMW was the world's ninth-largest producer of motor vehicles, with 2,555,341 vehicles produced[3] and in 2023 the 6th largest by revenue.[4] ",
+      "image": "autoBMW.png",
+      "avaible_time": []
+    },
+    {
+      "id": 2,
+      "name": "Mercedes-Benz S350d AMG 4MATIC W223 ",
+      "description": "The car is in perfect condition, externally and internally in an AMG package. On the practical black interior, special MANUFAKTUR upholstery with Exklusiv nappa leather (diamond) and Burmester music. The W223 is based on the new MRA II modular platform, and also has a scattering of state-of-the-art on-board electronics. The cabin of the new S-class has many different and amenities. A luxurious OLED display in the center of the front panel, a proprietary second-generation M BUS multimedia system with which you can comfortably stay in the car. Graphics, performance, capabilities all this is at a qualitatively new level. The car has all kinds of massages, ventilation, heated surfaces, an ottoman for the rear right passenger, a Burmester 4D audio system, which includes speakers right in the seats (for maximum immersion in music). You can experience these and other luxury options yourself by renting this car.",
+      "image": "mercedes-w233-6-1024x683.jpg",
+      "avaible_time": [
+        [
+          "das@mail.ru",
+          "2024-11-14",
+          "2024-11-16"
+        ],
+        [
+          "das@mail.ru",
+          "2024-11-19",
+          "2024-11-20"
+        ],
+        [
+          "das@mail.ru",
+          "2024-11-21",
+          "2024-11-23"
+        ],
+        [
+          "1mail@mail.ru",
+          "2024-11-25",
+          "2024-11-30"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Audi A4",
+      "description": "The Audi A4 is a line of luxury compact executive cars produced since 1994 by the German car manufacturer Audi, a subsidiary of the Volkswagen Group. The A4 has been built in five generations and is based on the Volkswagen Group B platform. The first generation A4 succeeded the Audi 80. The automaker's internal numbering treats the A4 as a continuation of the Audi 80 lineage, with the initial A4 designated as the B5-series, followed by the B6, B7, B8, and the B9. The B8 and B9 versions of the A4 are built on the Volkswagen Group MLB platform shared with several models and brands across the Volkswagen Group. The Audi A4 automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine.",
+      "avaible_time": [],
+      "image": "5e8d9b24074b3e2d371af0b3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Range Rover Autobiography Long IV",
+      "description": "The maximum configuration of LONG AUTOBIOGRAPHY. The machine is in perfect condition, on 22Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р РЋРЎв„ў discs with retractable thresholds. The interior of the car is made in a beautiful red color, massage of the front and rear rows of seats. There are comfortable seats with atamans and monitors for the rear passengers. Panorama, sliding blinds on the rear doors and Meridian music.",
+      "avaible_time": [],
+      "image": "range-rover-6-1024x683.jpg"
+    },
+    {
+      "id": 5,
+      "name": "BMW M3 G80",
+      "description": "Renting a BMW M3 G80 from Brook Drive will allow you to experience all the delights of high-speed driving through the streets of Moscow. This powerful sedan will be your ideal companion, allowing you to easily overcome any obstacles on the way. Confident driving, excellent maneuverability and excellent dynamics will help you feel like the master of the road, wherever you find yourself. Each trip will be an exciting adventure filled with adrenaline and unforgettable emotions.",
+      "avaible_time": [
+        [
+          "1mail@mail.ru",
+          "2024-11-09",
+          "2024-11-10"
+        ],
+        [
+          "das@mail.ru",
+          "2024-11-12",
+          "2024-11-14"
+        ]
+      ],
+      "image": "bmw-m3-9-1024x683.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "mail@mail.ru",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "email": "1mail@mail.ru",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "email": "das@mail.ru",
+      "password": "1233"
+    }
+  ]
+}

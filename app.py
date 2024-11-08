@@ -4,9 +4,6 @@ from flask import Flask, request, render_template, send_from_directory
 from database import does_user_exist, compare_json, contains_id, read_db, write_db
 
 app = Flask(__name__)
-CONST_NO_MATCHES = "No matches"
-UPLOAD_FOLDER = './static'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def start():
@@ -15,6 +12,7 @@ def start():
 @app.route('/login')
 def login():
     return render_template('auth.html', menu="login")
+
 @app.route('/registration')
 def registration():
     return render_template('auth.html', menu="registration")
