@@ -121,6 +121,10 @@ def update_car_req():
 
         start_day_datetime = datetime(int(start_day[0]), int(start_day[1]), int(start_day[2]))
         end_day_datetime = datetime(int(end_day[0]), int(end_day[1]), int(end_day[2]))
+
+        if start_day_datetime > end_day_datetime:
+            return {'message': "Начало аренды не должно быть позже конца", "code":400}
+
         isValidStart = datetime.today() > start_day_datetime
         isValidEnd = datetime.today() > end_day_datetime
         if isValidStart or isValidEnd:
@@ -133,9 +137,9 @@ def update_car_req():
             date2 = time[2].split('-')
             date_start = datetime(int(date1[0]),int(date1[1]),int(date1[2]))
             date_end = datetime(int(date2[0]),int(date2[1]),int(date2[2]))
-            if (date_start < start_day_datetime and date_end > start_day_datetime) or (date_start < end_day_datetime and date_end > end_day_datetime):
+            if (date_start <= start_day_datetime and date_end >= start_day_datetime) or (date_start <= end_day_datetime and date_end >= end_day_datetime):
                 return {'message': "Значение дат находится между другими датами", "code":400}
-            if (date_start > start_day_datetime and date_end < end_day_datetime):
+            if (date_start >= start_day_datetime and date_end <= end_day_datetime):
                 return {'message': "Значение дат включает даты чужой аренды", "code":400}
         cars_list[indexInsideList] = compare_json(cars_list[indexInsideList], data)
     else:
